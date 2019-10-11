@@ -34,7 +34,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#DE000000"
+            android:textColor="@color/meal_name_color"
             app:layout_constraintTop_toTopOf="@+id/meal_image"
             app:layout_constraintStart_toEndOf="@+id/meal_image"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -46,7 +46,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginEnd="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textColor="#8A000000"
+            android:textColor="@color/meal_description_color"
             app:layout_constraintStart_toEndOf="@+id/meal_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/meal_image"/>
