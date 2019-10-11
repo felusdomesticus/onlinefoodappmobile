@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MobileFoodApp</string>
+    <string name="to">TO</string>
+    <string name="subject">SUBJECT</string>
+    <string name="message">MESSAGE</string>
+    <string name="send">SEND</string>
+    <string name="reminder">Reminder name</string>
+    <string name="done">DONE</string>
+</resources>
