@@ -6,4 +6,5 @@
     <string name="send">SEND</string>
     <string name="reminder">Reminder name</string>
     <string name="done">DONE</string>
+    <string name="meal_image_here">Meal Image Here</string>
 </resources>
