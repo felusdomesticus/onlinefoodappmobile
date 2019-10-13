@@ -7,4 +7,9 @@
     <string name="reminder">Reminder name</string>
     <string name="done">DONE</string>
     <string name="meal_image_here">Meal Image Here</string>
+    <string name="preference_file_key">BILGEADAMPREF</string>
+    <string name="orders">Sipariş Durumu</string>
+    <string name="meal_menu">Yemekler</string>
+    <string name="previousorders">Önceki \n Siparişlerim</string>
+    <string name="login">Giriş/Çıkış</string>
 </resources>
