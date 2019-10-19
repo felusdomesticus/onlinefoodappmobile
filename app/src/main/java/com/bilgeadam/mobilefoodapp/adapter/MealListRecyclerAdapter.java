@@ -15,6 +15,7 @@ import com.bilgeadam.mobilefoodapp.data.Meal;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MealListRecyclerAdapter extends RecyclerView.Adapter<MealListRecyclerAdapter.MealViewHolder> {
 
@@ -44,6 +45,9 @@ public class MealListRecyclerAdapter extends RecyclerView.Adapter<MealListRecycl
         return mMealList.size();
     }
 
+    public void setMealList(List<Meal> mMealList) {
+        this.mMealList = mMealList;
+    }
 
     class MealViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
