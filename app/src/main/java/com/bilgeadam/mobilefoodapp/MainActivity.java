@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         configureSlider();
     }
 
-    public void showMealMenuActivity(View view) {
+    public void showMealMenu(View view) {
         Intent intent = new Intent(this, MealMenuActivity.class);
         startActivity(intent);
     }
