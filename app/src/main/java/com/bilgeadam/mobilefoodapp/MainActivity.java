@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Meal>> call, Response<List<Meal>> response) {
                 imagePagerAdapter.setCampaignMealList(response.body());
                 imagePagerAdapter.notifyDataSetChanged();
+                circleIndicator = findViewById(R.id.circle);
+                circleIndicator.setViewPager(viewPager);
             }
 
             @Override
