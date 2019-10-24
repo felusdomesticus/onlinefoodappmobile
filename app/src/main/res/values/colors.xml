@@ -22,4 +22,5 @@
     <color name="colorPastelRed">#D85252</color>
     <color name="grey">#BDBDBD</color>
     <color name="cloudblue">#03A9F4</color>
+    <color name="darkred_ripple">#F14444</color>
 </resources>
