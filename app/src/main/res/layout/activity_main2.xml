@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/welcomeText"
+    <include
+        android:id="@+id/campaign_slider"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3.5"
-        android:background="@color/grey">
-    </TextView>
+        layout="@layout/layout_image_slider"
+        />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/arranger"

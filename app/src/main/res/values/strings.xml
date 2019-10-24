@@ -12,4 +12,5 @@
     <string name="meal_menu">Yemekler</string>
     <string name="previousorders">Önceki \n Siparişlerim</string>
     <string name="login">Giriş/Çıkış</string>
+    <string name="campaign">Campaign</string>
 </resources>
