@@ -11,7 +11,4 @@ public interface MealDataService {
 
     @GET("/meals/all")
     Call<List<Meal>> getMeals();
-
-    @GET("/meals/campaigns")
-    Call<List<Meal>> getCampaigns();
 }
