@@ -2,7 +2,9 @@ package com.bilgeadam.mobilefoodapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Meal {
+import java.io.Serializable;
+
+public class Meal implements Serializable {
 
     @JsonProperty("code")
     private String code;

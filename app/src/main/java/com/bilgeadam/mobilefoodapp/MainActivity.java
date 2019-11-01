@@ -8,10 +8,13 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bilgeadam.mobilefoodapp.activity.MealDetailActivity;
 import com.bilgeadam.mobilefoodapp.activity.MealMenuActivity;
 import com.bilgeadam.mobilefoodapp.adapter.ImagePagerAdapter;
+import com.bilgeadam.mobilefoodapp.custom.ClickableViewPager;
 import com.bilgeadam.mobilefoodapp.dto.JwtTokenRequest;
 import com.bilgeadam.mobilefoodapp.dto.JwtTokenResponse;
 import com.bilgeadam.mobilefoodapp.dto.Meal;
@@ -22,6 +25,8 @@ import com.bilgeadam.mobilefoodapp.utililty.RetrofitClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -34,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ImagePagerAdapter imagePagerAdapter;
     private CircleIndicator circleIndicator;
-    private ViewPager viewPager;
+    private ClickableViewPager viewPager;
+    private List<Meal> campaignMealList = new ArrayList<>();
+    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
         authenticate();
         configureSlider();
+
+        swipeRefresh = findViewById(R.id.swiperefresh);
+        swipeRefresh.setOnRefreshListener(() -> {
+            getCampaigns();
+            swipeRefresh.setRefreshing(false);
+        });
     }
 
     public void showMealMenu(View view) {
@@ -53,24 +66,32 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.image_pager);
         imagePagerAdapter = new ImagePagerAdapter(this);
         viewPager.setAdapter(imagePagerAdapter);
+        viewPager.setOnItemClickListener(position -> {
+            if(!campaignMealList.isEmpty()) {
+                Intent intent = new Intent(getApplicationContext(), MealDetailActivity.class);
+                intent.putExtra("meal", campaignMealList.get(position));
+                startActivity(intent);
+            }
+        });
         AppUtils.automaticSlide(viewPager, imagePagerAdapter);
         circleIndicator = findViewById(R.id.circle);
         circleIndicator.setViewPager(viewPager);
     }
 
-    private void getMeals() {
+    private void getCampaigns() {
         MealDataService mealDataService = RetrofitClient.getRetrofitInstance(this).create(MealDataService.class);
-        mealDataService.getMeals().enqueue(new Callback<List<Meal>>() {
+        mealDataService.getCampaigns().enqueue(new Callback<List<Meal>>() {
             @Override
-            public void onResponse(Call<List<Meal>> call, Response<List<Meal>> response) {
+            public void onResponse(@NonNull Call<List<Meal>> call, @NonNull Response<List<Meal>> response) {
                 imagePagerAdapter.setCampaignMealList(response.body());
+                campaignMealList= imagePagerAdapter.getCampaignMealList();
                 imagePagerAdapter.notifyDataSetChanged();
                 circleIndicator = findViewById(R.id.circle);
                 circleIndicator.setViewPager(viewPager);
             }
 
             @Override
-            public void onFailure(Call<List<Meal>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Meal>> call, @NonNull Throwable t) {
                 t.printStackTrace();
             }
         });
@@ -87,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences sharedPref = getSharedPreferences(
                             getString(R.string.preference_file_key), Context.MODE_PRIVATE);
                     sharedPref.edit().putString("TOKEN", jwtTokenResponse.getToken()).apply();
-                    getMeals();
+                    getCampaigns();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

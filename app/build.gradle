@@ -42,5 +42,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-jackson:2.6.2'
 
     //custom
-    implementation 'me.relex:circleindicator:1.2.2'
+    implementation 'me.relex:circleindicator:1.3.2'
 }

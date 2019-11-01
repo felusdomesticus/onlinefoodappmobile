@@ -55,10 +55,10 @@ public class ImagePagerAdapter extends PagerAdapter {
                 .placeholder(context.getResources().getDrawable(R.color.cardview_dark_background))
                 .into(imageView);
 
-        View cardView = LayoutInflater.from(context).inflate(R.layout.layout_image_slider, null);
-        /*String waterMarkStr = !campaignMealList.isEmpty() ? campaignMealList.get(position).getText() : null;
-        TextView waterMarkText = cardView.findViewById(R.id.water_mark);
-        waterMarkText.setText(waterMarkStr);*/
+        //View cardView = LayoutInflater.from(context).inflate(R.layout.layout_image_slider, null);
+        String waterMarkStr = !campaignMealList.isEmpty() ? campaignMealList.get(position).getPrice().toString() : null;
+        TextView waterMarkText = view.findViewById(R.id.water_mark);
+        waterMarkText.setText(waterMarkStr);
         container.addView(view);
         return view;
     }

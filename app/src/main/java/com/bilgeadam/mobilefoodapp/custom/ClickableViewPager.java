@@ -28,6 +28,7 @@ public class ClickableViewPager extends ViewPager {
     private void setup() {
         final GestureDetector tapGestureDetector = new GestureDetector(getContext(), new TapGestureListener());
         setOnTouchListener((v, event) -> {
+            v.performClick();
             tapGestureDetector.onTouchEvent(event);
             return false;
         });

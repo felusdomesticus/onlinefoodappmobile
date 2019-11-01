@@ -23,6 +23,9 @@
         <activity
             android:name=".activity.MealMenuActivity"
             android:label="Meal Menu" />
+        <activity
+            android:name=".activity.MealDetailActivity"
+            android:label="Meal Detail" />
     </application>
 
 </manifest>
